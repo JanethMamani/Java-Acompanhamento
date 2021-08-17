@@ -1,0 +1,16 @@
+package Utilidades;
+
+public class Calculadora {
+
+	//Por conveniencia padrao as constantes final e declaradas sao capitalizadas e separadas por _
+	public final double ESSE_E_O_PI = 3.14159; 
+	
+	public double circunf (double medida) {
+		return 2.0 * ESSE_E_O_PI * medida;
+	}
+	
+	public double volume (double medida) {
+		return 4.0 * ESSE_E_O_PI * medida * medida * medida /3.0;
+	}
+	
+}

@@ -1,0 +1,23 @@
+package Cadastro;
+
+public class Cliente {
+	
+	private int numeroDaConta;
+	private String cliente;
+	private double deposito;
+	
+	public Cliente(int numero, String cliente, double deposito) {
+		numeroDaConta = numero;
+		this.cliente = cliente;
+		this.deposito = deposito;
+	}
+	
+	public Cliente(int numero, String cliente) {
+		numeroDaConta = numero;
+		this.cliente = cliente;
+		deposito = 0;
+	}
+	
+	
+
+}

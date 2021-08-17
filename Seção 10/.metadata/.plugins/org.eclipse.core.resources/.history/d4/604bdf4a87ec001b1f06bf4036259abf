@@ -1,0 +1,10 @@
+package Entidade;
+
+public class Estudante {
+	
+	private String nome;
+	private String email;
+	private int quantidade;
+	
+
+}

@@ -1,0 +1,40 @@
+package Aplicacion;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import Entidade.Estudante;
+
+public class Executor {
+	
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		//Vetor com objetos aluno
+		Estudante [ ] aluno;
+		
+		System.out.print("Quantos quartos vão ser alugados? ");
+		int totalQuartos = sc.nextInt();
+		sc.nextLine();
+		
+		for(int i=0;i<totalQuartos;i++) {
+			System.out.printf("Aluguel #%.2f:%n",i+1);
+			System.out.print("Nome: ");
+			String enterNome = sc.nextLine();
+			System.out.print("Email: ");
+			String enterEmail = sc.nextLine();
+			System.out.print("Quarto: ");
+			int quarto = sc.nextInt();
+			sc.nextLine();
+			aluno [i] = new Estudante(enterNome, enterEmail, quarto);
+			System.out.println();
+		}
+		
+		System.out.println("Quartos ocupados:");
+		
+		
+		sc.close();
+	}
+
+}

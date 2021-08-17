@@ -1,0 +1,14 @@
+package Aplicacion;
+
+import java.text.SimpleDateFormat;
+
+public class Executor {
+	
+	public static void main(String[] args) {
+		
+		SimpleDateFormat dia1 = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		
+	}
+
+}

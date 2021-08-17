@@ -1,0 +1,39 @@
+package Aplicacion;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Executor {
+	
+	public static final double ESSE_E_O_PI = 3.14159; //Por conveniencia padrao as constantes final e declaradas sao capitalizadas e separadas por _
+	
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Digite o raio: ");
+		double raio = sc.nextDouble();
+		
+		double circ = circunf(raio);
+		
+		double vol = volume(raio);
+		
+		System.out.printf("Circunferência: %.2f%n", circ);
+		System.out.printf("Volume: %.2f%n", vol);
+		System.out.printf("PI: %.2f%n", ESSE_E_O_PI);
+		
+		
+		sc.close();
+	}
+	
+	public static double circunf (double medida) {
+		return 2.0 * ESSE_E_O_PI * medida;
+	}
+	
+	public static double volume (double medida) {
+		return 4.0 * ESSE_E_O_PI * medida *medida /3.0;
+	}
+
+
+}

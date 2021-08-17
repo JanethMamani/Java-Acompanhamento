@@ -1,0 +1,16 @@
+package Aplicacion;
+
+import Entidades.Conta;
+import Entidades.ContaBusiness;
+
+public class Execucion {
+	
+	public static void main(String[] args) {
+		
+		Conta conti = new Conta(8002, "X", 0.0);
+		ContaBusiness ContBuss = new ContaBusiness(8002, "Zero", 0.0, 1000.0);
+		
+		
+	}
+
+}

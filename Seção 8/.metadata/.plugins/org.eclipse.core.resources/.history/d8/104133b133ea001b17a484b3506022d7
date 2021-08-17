@@ -1,0 +1,28 @@
+package Aplicacion;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Executor {
+	
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Digite o raio: ");
+		double raio = sc.nextDouble();
+		
+		double circ = circunf(raio);
+		
+		double vol = volume(raio);
+		
+		System.out.printf("Circunferência: %.2f%n", circ);
+		System.out.printf("Volume: %.2f%n", vol);
+		System.out.printf("PI: %.2f%n", vol);
+		
+		
+		sc.close();
+	}
+
+}

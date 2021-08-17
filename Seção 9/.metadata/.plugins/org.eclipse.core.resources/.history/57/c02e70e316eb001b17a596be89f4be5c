@@ -1,0 +1,38 @@
+package Aplicacion;
+
+import java.util.Scanner;
+
+import Cadastro.Cliente;
+
+public class InterfaceCliente {
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Cadastro de novo cliente: ");
+		System.out.println();
+		
+		System.out.print("Digite o número da conta: ");
+		int numeroConta = sc.nextInt();
+		System.out.print("Digite o nome do cliente: ");
+		String nome = sc.nextLine();
+		
+		System.out.println("Gostaria de realizar um deposito inicial? (s/n)");
+		char resp = sc.next().charAt(0);
+		
+		if (resp == 's') {
+			System.out.println("Digite a quantidade a ser depositada: ");
+			double deposito = sc.nextDouble();
+			
+			Cliente usuarioN1 = new Cliente(numeroConta, nome, deposito);
+		} else {
+			Cliente usuarioN1 = new Cliente(numeroConta, nome);
+		}
+		
+		usuarioN1.dadosCliente(numeroConta, nome, saldo);
+		
+		sc.close();
+	}
+
+}
