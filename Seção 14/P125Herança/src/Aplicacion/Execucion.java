@@ -38,7 +38,7 @@ public class Execucion {
 		}
 		*/
 		
-		
+		//Olha o polimorfismo e sobrescrita em açao
 		Conta conta1 = new Conta(1001, "X", 2000.0);
 		conta1.saque(100.0);
 		System.out.println(conta1.getSaldo());
