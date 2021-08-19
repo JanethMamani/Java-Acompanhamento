@@ -1,5 +1,8 @@
 package Aplicacion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Entidades.Conta;
 import Entidades.ContaBusiness;
 import Entidades.Poupanca;
@@ -39,7 +42,9 @@ public class Execucion {
 		*/
 		
 		//Olha o polimorfismo e sobrescrita em açao
-		Conta conta1 = new Conta(1001, "X", 2000.0);
+		
+		
+		/*Conta conta1 = new Conta(1001, "X", 2000.0);
 		conta1.saque(100.0);
 		System.out.println(conta1.getSaldo());
 		
@@ -49,7 +54,22 @@ public class Execucion {
 		
 		Conta conta3 = new ContaBusiness(1003, "Axl", 2000.0, 500.0);
 		conta3.saque(200.0);
-		System.out.println(conta3.getSaldo());
+		System.out.println(conta3.getSaldo());*/
+		
+		List<Conta> contas = new ArrayList<>();
+		
+		contas.add(new Poupanca(1001, "X", 500.0, 0.01));
+		contas.add(new ContaBusiness(1002, "Zero", 1000.0, 500.0));
+		contas.add(new Poupanca(1004, "Axl", 400.0, 0.01));
+		contas.add(new ContaBusiness(1005, "Iris", 300.0, 500.0));
+		
+		double soma = 0;
+		
+		for (Conta conta:contas) {
+			soma += conta.getSaldo();
+		}
+		
+		System.out.printf("Saldo total: %.2f%n", soma);
 	}
 
 }
