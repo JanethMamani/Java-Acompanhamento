@@ -32,19 +32,15 @@ public class Executor {
 			System.out.println("Entre com a data de atualização da reserva:");
 			System.out.print("Data de entrada (dd/MM/yyyy): ");
 			entrada = formato.parse(sc.next());
-			System.out.print("Datade saída (dd/MM/yyyy): ");
+			System.out.print("Data de saída (dd/MM/yyyy): ");
 			saida = formato.parse(sc.next());
 			
-			Date agora = new Date();
-			if (entrada.before(agora) || saida.before(agora)) {
-				System.out.println("Erro em realizar a reseva: as datas devem ser futuras.");
+			String erro = reserva.atualizarDatas(entrada, saida);
+			if (erro != null) {
+				System.out.println("Erro na reserva: " + erro);
 			}
-			else if(!saida.after(entrada)) {
-				System.out.println("Erro em realizar reservas: a data de saida deve ser depois da entrada");
-			} 
 			else {
-				reserva.atualizarDatas(entrada, saida);
-				System.out.println("Reserva: " + reserva);
+				System.out.println("Reserva: "+ reserva);
 			}
 		}
 		

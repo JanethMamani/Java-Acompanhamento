@@ -35,9 +35,17 @@ public class Reserva {
 		long dif = saida.getTime() - entrada.getTime();
 		return TimeUnit.DAYS.convert(dif, TimeUnit.MILLISECONDS);
 	}
-	public void atualizarDatas(Date checkin, Date checkout) {
-		entrada = checkin;
-		saida = checkout;
+	public String atualizarDatas(Date entrada, Date saida) {
+		Date agora = new Date();
+		if (entrada.before(agora) || saida.before(agora)) {
+			return "As datas devem ser futuras";
+		}
+		if(!saida.after(entrada)) {
+			return "A data de saida deve ser depois da entrada";
+		} 
+		this.entrada = entrada;
+		this.saida = saida;
+		return null;
 	}
 	@Override
 	public String toString() {
