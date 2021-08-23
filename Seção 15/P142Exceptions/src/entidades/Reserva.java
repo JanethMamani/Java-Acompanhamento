@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import excecoes.ExceptionDominio;
+
 public class Reserva {
 	
 	private Integer numeroQuarto;
@@ -12,7 +14,10 @@ public class Reserva {
 	
 	private static SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
 	
-	public Reserva(Integer numeroQuarto, Date entrada, Date saida) {
+	public Reserva(Integer numeroQuarto, Date entrada, Date saida){
+		if(!saida.after(entrada)) {
+			throw new ExceptionDominio("A data de saida deve ser depois da entrada");
+		} 
 		this.numeroQuarto = numeroQuarto;
 		this.entrada = entrada;
 		this.saida = saida;
@@ -35,17 +40,16 @@ public class Reserva {
 		long dif = saida.getTime() - entrada.getTime();
 		return TimeUnit.DAYS.convert(dif, TimeUnit.MILLISECONDS);
 	}
-	public String atualizarDatas(Date entrada, Date saida) {
+	public void atualizarDatas(Date entrada, Date saida){
 		Date agora = new Date();
 		if (entrada.before(agora) || saida.before(agora)) {
-			return "As datas devem ser futuras";
+			throw new ExceptionDominio("As datas devem ser futuras");
 		}
 		if(!saida.after(entrada)) {
-			return "A data de saida deve ser depois da entrada";
+			throw new ExceptionDominio("A data de saida deve ser depois da entrada");
 		} 
 		this.entrada = entrada;
 		this.saida = saida;
-		return null;
 	}
 	@Override
 	public String toString() {
