@@ -31,6 +31,9 @@ public class Partida {
 	private void setupInicial() {
 		colocarNovaPeca('e', 8, new Rei(tabua, Cor.BRANCO));
 		colocarNovaPeca('a', 8, new Torre(tabua, Cor.BRANCO));
+		colocarNovaPeca('h', 8, new Torre(tabua, Cor.BRANCO));
 		colocarNovaPeca('e', 1, new Rei(tabua, Cor.PRETO));
+		colocarNovaPeca('a', 1, new Torre(tabua, Cor.PRETO));
+		colocarNovaPeca('h', 1, new Torre(tabua, Cor.PRETO));
 	}
 }
