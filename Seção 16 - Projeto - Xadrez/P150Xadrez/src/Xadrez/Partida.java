@@ -24,9 +24,13 @@ public class Partida {
 		return malha;
 	}
 	
+	private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca) {
+		tabua.colocarPeca(peca, new PosicaoXadrez(coluna, linha).paraPosicao());
+	}
+	
 	private void setupInicial() {
-		tabua.colocarPeca(new Torre(tabua, Cor.PRETO), new Posicao(0,0));
-		tabua.colocarPeca(new Rei(tabua, Cor.PRETO), new Posicao(0,4));
-		tabua.colocarPeca(new Rei(tabua, Cor.BRANCO), new Posicao(7,4));
+		colocarNovaPeca('e', 8, new Rei(tabua, Cor.BRANCO));
+		colocarNovaPeca('a', 8, new Torre(tabua, Cor.BRANCO));
+		colocarNovaPeca('e', 1, new Rei(tabua, Cor.PRETO));
 	}
 }
