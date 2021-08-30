@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+C:\Users\008978631\Google Drive\Udemy\Curso Java Completo - Nelio\Seção 3\JavaBásico\.metadata\.plugins\org.eclipse.jdt.core
-4037734559.index
-1642175237.index
