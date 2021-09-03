@@ -25,6 +25,12 @@ public class Partida {
 		return malha;
 	}
 	
+	public boolean[][] movimentosPossiveis(PosicaoXadrez posicaoOrigem){
+		Posicao posicao = posicaoOrigem.paraPosicao();
+		validarPosicaoOrigem(posicao);
+		return tabua.peca(posicao).movimentosPossiveis();
+	}
+	
 	public PecaXadrez moverPecaXadrez(PosicaoXadrez origem, PosicaoXadrez destino) {
 		Posicao orig = origem.paraPosicao();
 		Posicao dest = destino.paraPosicao();
