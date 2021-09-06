@@ -16,6 +16,7 @@ public class Partida {
 	private Cor jogador;
 	private Tabuleiro tabua;
 	private boolean cheque;//Por padrão já está como falso
+	private boolean xequemate;
 	
 	private List<Peca> pecasNoTabuleiro = new ArrayList<>();
 	private List<Peca> pecasCapturadas = new ArrayList<>();
@@ -38,6 +39,10 @@ public class Partida {
 	
 	public boolean getCheque() {
 		return cheque;
+	}
+	
+	public boolean getXequemate() {
+		return xequemate;
 	}
 	
 	public PecaXadrez[][] getPecas(){
@@ -69,7 +74,13 @@ public class Partida {
 		}
 		cheque = (testeCheque(oponente(jogador))) ? true : false;
 		
-		proximoTurno();
+		if (testeXequemate(oponente(jogador))) {
+			xequemate = true;
+		}
+		else {
+			proximoTurno();
+		}
+		
 		return (PecaXadrez)pecaCapturada;
 	}
 	
@@ -144,6 +155,32 @@ public class Partida {
 			}
 		}
 		return false;
+	}
+	
+	private boolean testeXequemate(Cor cor) {
+		if (!testeCheque(cor)) {
+			return false;
+		}
+		List<Peca> pecas = pecasNoTabuleiro.stream().filter(x -> ((PecaXadrez)x).getCor() == cor).collect(Collectors.toList());
+		for (Peca pecinha : pecas) {
+			boolean[][] malha = pecinha.movimentosPossiveis();
+			for(int i=0; i<tabua.getLinhas(); i++) {
+				for(int j=0; j<tabua.getColunas(); j++) {
+					if(malha[i][j]) {
+						Posicao origem = ((PecaXadrez)pecinha).getPosicaoXadrez().paraPosicao();
+						Posicao destino = new Posicao(i,j);
+						Peca pecaCapturada = facaMover(origem, destino);
+						boolean testeCheque = testeCheque(cor);
+						desfazerMove(origem, destino, pecaCapturada);
+						if(!testeCheque) {
+							return false;
+						}
+						
+					}
+				}
+			}
+		}
+		return true;
 	}
 	
 	private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca) {
