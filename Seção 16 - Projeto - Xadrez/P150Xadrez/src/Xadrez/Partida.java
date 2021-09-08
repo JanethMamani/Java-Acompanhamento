@@ -85,7 +85,8 @@ public class Partida {
 	}
 	
 	private Peca facaMover(Posicao origem, Posicao destino) {
-		Peca pecinha = tabua.removerPeca(origem);
+		PecaXadrez pecinha = (PecaXadrez)tabua.removerPeca(origem);
+		pecinha.incrementaContadorMovimentos();
 		Peca pecaCapturada = tabua.removerPeca(destino);
 		tabua.colocarPeca(pecinha, destino);
 		
@@ -98,7 +99,8 @@ public class Partida {
 	}
 	
 	private void desfazerMove(Posicao origem, Posicao destino, Peca pecaCapturada) {
-		Peca pecinha = tabua.removerPeca(destino);
+		PecaXadrez pecinha = (PecaXadrez)tabua.removerPeca(destino);
+		pecinha.decrementaContadorMovimentos();
 		tabua.colocarPeca(pecinha, origem);
 		
 		if(pecaCapturada != null) {
