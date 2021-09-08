@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import Tabuleiro.Peca;
 import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
+import Xadrez.Pecas.Peao;
 import Xadrez.Pecas.Rei;
 import Xadrez.Pecas.Torre;
 
@@ -191,11 +192,27 @@ public class Partida {
 	}
 	
 	private void setupInicial() {
-		colocarNovaPeca('e', 8, new Rei(tabua, Cor.BRANCO));
-		colocarNovaPeca('a', 8, new Torre(tabua, Cor.BRANCO));
-		colocarNovaPeca('h', 8, new Torre(tabua, Cor.BRANCO));
-		colocarNovaPeca('e', 1, new Rei(tabua, Cor.PRETO));
-		colocarNovaPeca('a', 1, new Torre(tabua, Cor.PRETO));
-		colocarNovaPeca('h', 1, new Torre(tabua, Cor.PRETO));
+		colocarNovaPeca('e', 8, new Rei(tabua, Cor.PRETO));
+		colocarNovaPeca('a', 8, new Torre(tabua, Cor.PRETO));
+		colocarNovaPeca('h', 8, new Torre(tabua, Cor.PRETO));
+		colocarNovaPeca('a', 7, new Peao(tabua, Cor.PRETO));
+		colocarNovaPeca('b', 7, new Peao(tabua, Cor.PRETO));
+		colocarNovaPeca('c', 7, new Peao(tabua, Cor.PRETO));
+		colocarNovaPeca('d', 7, new Peao(tabua, Cor.PRETO));
+		colocarNovaPeca('e', 7, new Peao(tabua, Cor.PRETO));
+		colocarNovaPeca('f', 7, new Peao(tabua, Cor.PRETO));
+		colocarNovaPeca('g', 7, new Peao(tabua, Cor.PRETO));
+		colocarNovaPeca('h', 7, new Peao(tabua, Cor.PRETO));
+		colocarNovaPeca('a', 2, new Peao(tabua, Cor.BRANCO));
+		colocarNovaPeca('b', 2, new Peao(tabua, Cor.BRANCO));
+		colocarNovaPeca('c', 2, new Peao(tabua, Cor.BRANCO));
+		colocarNovaPeca('d', 2, new Peao(tabua, Cor.BRANCO));
+		colocarNovaPeca('e', 2, new Peao(tabua, Cor.BRANCO));
+		colocarNovaPeca('f', 2, new Peao(tabua, Cor.BRANCO));
+		colocarNovaPeca('g', 2, new Peao(tabua, Cor.BRANCO));
+		colocarNovaPeca('h', 2, new Peao(tabua, Cor.BRANCO));
+		colocarNovaPeca('e', 1, new Rei(tabua, Cor.BRANCO));
+		colocarNovaPeca('a', 1, new Torre(tabua, Cor.BRANCO));
+		colocarNovaPeca('h', 1, new Torre(tabua, Cor.BRANCO));
 	}
 }
