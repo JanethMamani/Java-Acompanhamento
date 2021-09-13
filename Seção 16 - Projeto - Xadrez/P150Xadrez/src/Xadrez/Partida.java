@@ -122,7 +122,7 @@ public class Partida {
 			 throw new IllegalStateException("Não há peca para ser promovida");
 		}
 		if(!type.equals("B") && !type.equals("C") && !type.equals("T") & !type.equals("Q")) {
-			throw new InvalidParameterException("Tipo Invalido pra promocao");
+			 return promocao;
 		}
 		Posicao posi = promocao.getPosicaoXadrez().paraPosicao();
 		Peca pecinha = tabua.removerPeca(posi);

@@ -41,7 +41,11 @@ public class Jogo {
 				
 				if (partida.getPromocao() != null) {
 					System.out.print("Entre com a peca para promocao(B/C/T/Q): ");
-					String tipo = sc.nextLine();
+					String tipo = sc.nextLine().toUpperCase();
+					while (!tipo.equals("B") && !tipo.equals("C") && !tipo.equals("T") & !tipo.equals("Q")) {
+						System.out.print("Tipo invalido! Entre com tipo para promocao (B/C/T/Q): ");
+						tipo = sc.nextLine().toUpperCase();
+					}
 					partida.trocarPecaPromovida(tipo);
 				}
 			}
