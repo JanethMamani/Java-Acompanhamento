@@ -3,12 +3,16 @@ package Xadrez.Pecas;
 import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
 import Xadrez.Cor;
+import Xadrez.Partida;
 import Xadrez.PecaXadrez;
 
 public class Peao extends PecaXadrez {
 	
-	public Peao(Tabuleiro tabuleiro, Cor cor) {
+	private Partida partida;
+	
+	public Peao(Tabuleiro tabuleiro, Cor cor, Partida partida) {
 		super(tabuleiro,cor);
+		this.partida = partida;
 	}
 
 	@Override
@@ -27,13 +31,26 @@ public class Peao extends PecaXadrez {
 				malha[posi.getLinha()][posi.getColuna()] = true;
 			}
 			posi.setValor(posicao.getLinha() - 1,posicao.getColuna() - 1);
-			if(getTabuleiro().posicaoExiste(posi) && getTabuleiro().haUmaPeca(posi)) {
+			if(getTabuleiro().posicaoExiste(posi) && getTabuleiro().haUmaPeca(posi) && !(getCor() == Cor.PRETO)) {
 				malha[posi.getLinha()][posi.getColuna()] = true;
 			}
 			posi.setValor(posicao.getLinha() - 1,posicao.getColuna() + 1);
-			if(getTabuleiro().posicaoExiste(posi) && getTabuleiro().haUmaPeca(posi)) {
+			if(getTabuleiro().posicaoExiste(posi) && getTabuleiro().haUmaPeca(posi) && !(getCor() == Cor.PRETO)) {
 				malha[posi.getLinha()][posi.getColuna()] = true;
 			}
+			
+			//En passant
+			if(posicao.getLinha() == 3) {
+				Posicao esquerda = new Posicao(posicao.getLinha(), posicao.getColuna() - 1);
+				if (getTabuleiro().posicaoExiste(esquerda) && haUmaPecaOponente(esquerda) && getTabuleiro().peca(esquerda) == partida.getEnPassantVulneravel()) {
+					malha[esquerda.getLinha() - 1][esquerda.getColuna()] = true;
+				}
+				Posicao direita = new Posicao(posicao.getLinha(), posicao.getColuna() + 1);
+				if (getTabuleiro().posicaoExiste(direita) && haUmaPecaOponente(direita) && getTabuleiro().peca(direita) == partida.getEnPassantVulneravel()) {
+					malha[direita.getLinha() - 1][direita.getColuna()] = true;
+				}
+			}
+			
 		}
 		else {
 			posi.setValor(posicao.getLinha() + 1, posicao.getColuna());
@@ -46,12 +63,24 @@ public class Peao extends PecaXadrez {
 				malha[posi.getLinha()][posi.getColuna()] = true;
 			}
 			posi.setValor(posicao.getLinha() + 1,posicao.getColuna() - 1);
-			if(getTabuleiro().posicaoExiste(posi) && getTabuleiro().haUmaPeca(posi)) {
+			if(getTabuleiro().posicaoExiste(posi) && getTabuleiro().haUmaPeca(posi) && !(getCor() == Cor.BRANCO)) {
 				malha[posi.getLinha()][posi.getColuna()] = true;
 			}
 			posi.setValor(posicao.getLinha() + 1,posicao.getColuna() + 1);
-			if(getTabuleiro().posicaoExiste(posi) && getTabuleiro().haUmaPeca(posi)) {
+			if(getTabuleiro().posicaoExiste(posi) && getTabuleiro().haUmaPeca(posi) && !(getCor() == Cor.BRANCO)) {
 				malha[posi.getLinha()][posi.getColuna()] = true;
+			}
+			
+			//En passant
+			if(posicao.getLinha() == 4) {
+				Posicao esquerda = new Posicao(posicao.getLinha(), posicao.getColuna() - 1);
+				if (getTabuleiro().posicaoExiste(esquerda) && haUmaPecaOponente(esquerda) && getTabuleiro().peca(esquerda) == partida.getEnPassantVulneravel()) {
+					malha[esquerda.getLinha() + 1][esquerda.getColuna()] = true;
+				}
+				Posicao direita = new Posicao(posicao.getLinha(), posicao.getColuna() + 1);
+				if (getTabuleiro().posicaoExiste(direita) && haUmaPecaOponente(direita) && getTabuleiro().peca(direita) == partida.getEnPassantVulneravel()) {
+					malha[direita.getLinha() + 1][direita.getColuna()] = true;
+				}
 			}
 		}
 		
