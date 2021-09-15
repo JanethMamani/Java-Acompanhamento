@@ -1,6 +1,6 @@
 package Modelo.Servicos;
 
-public class TaxaServicoBrasil {
+public class TaxaServicoBrasil implements ServicoTaxa{
 	
 	public double taxaPorPorcentagem(double valor) { //double sempre pede valor, nao aceita nulo
 		//Mas ja que aqui sempre vai ter valor mesmo..
