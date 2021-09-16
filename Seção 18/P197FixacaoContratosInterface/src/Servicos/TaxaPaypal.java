@@ -3,7 +3,8 @@ package Servicos;
 public class TaxaPaypal implements TaxaPagamento{
 	
 	public double aplicarTaxa(double parcela, int mes) {
-		return parcela*1.01 *mes  + parcela*0.02;
+		double part1 = parcela + parcela*0.01 *mes;
+		return  part1*1.02;
 	}
 
 }

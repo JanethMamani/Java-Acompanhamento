@@ -1,6 +1,7 @@
 package Servicos;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import Entidades.Contrato;
 
@@ -26,7 +27,8 @@ public class ServicoPagamento {
 		
 		System.out.println("Pagamentos: ");
 		for (int i=1; i<=quantParcelas; i++) {
-			System.out.println(contrato.getData() + "-" + taxas.aplicarTaxa(parcelas, i));
+			
+			System.out.println(contrato.getData() + "-" + String.format("%.2f", taxas.aplicarTaxa(parcelas, i)));
 		}
 	}
 
