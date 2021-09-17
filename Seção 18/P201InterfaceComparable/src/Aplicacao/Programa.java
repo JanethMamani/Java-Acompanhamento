@@ -19,13 +19,13 @@ public class Programa {
 		try(BufferedReader br = new BufferedReader(new FileReader(caminho))){
 			String empregado = br.readLine();
 			while (empregado != null) {
-				String[] emp = empregado.split(", ");
+				String[] emp = empregado.split(" ");//Podia ser ","
 				nomes.add(new Funcionario(emp[0], Double.parseDouble(emp[1])));
 				empregado = br.readLine();
 			}
 			Collections.sort(nomes); //Ordenar nomes em ordem alfabetica
-			for (String item : nomes) {
-				System.out.println(item);
+			for (Funcionario item : nomes) {
+				System.out.println(item.getNome() + " " + item.getSalario());
 			}
 		}catch (IOException excep) {
 			System.out.println("Erro: " + excep.getMessage());

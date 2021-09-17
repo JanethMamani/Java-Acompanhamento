@@ -1,6 +1,6 @@
 package Entidade;
 
-public class Funcionario {
+public class Funcionario implements Comparable <Funcionario>{
 	
 	private String nome;
 	private Double salario;
@@ -25,6 +25,12 @@ public class Funcionario {
 
 	public void setSalario(Double salario) {
 		this.salario = salario;
+	}
+
+	@Override
+	public int compareTo(Funcionario item) {
+		// TODO Auto-generated method stub
+		return -nome.compareTo(item.getNome());// use - para decreascente, e subttitua o get nome por get salario com salario.compare para ordenar por salario
 	}
 	
 }
