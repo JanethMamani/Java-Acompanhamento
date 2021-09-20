@@ -1,5 +1,4 @@
-15
-16
-13
-10
-17
+Computador,1500
+Notebook,4000
+Tablet,2000
+Celular,1200

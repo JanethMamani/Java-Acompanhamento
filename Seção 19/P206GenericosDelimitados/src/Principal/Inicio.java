@@ -6,24 +6,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Entidades.Produto;
 import Servicos.ServicoCalculo;
 
 public class Inicio {
 	
 	public static void main(String[] args) {
 		
-		List<Integer> produtos = new ArrayList<>();
+		List<Produto> produtos = new ArrayList<>();
 		
 		String caminho = "TestFile.txt";
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(caminho))){
 			String linha = br.readLine();
 			while(linha != null) {
-				produtos.add(Integer.parseInt(linha));
+				String[] campos = linha.split(",");
+				produtos.add(new Produto(campos[0], Double.parseDouble(campos[1])));
 				linha = br.readLine();
 			}
 			
-			Integer num = ServicoCalculo.max(produtos);
+			Produto num = ServicoCalculo.max(produtos);
 			System.out.println("Maximo: ");
 			System.out.println(num);
 		} catch (IOException excep) {
