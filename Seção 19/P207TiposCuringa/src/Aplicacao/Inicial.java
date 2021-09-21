@@ -17,7 +17,7 @@ public class Inicial {
 		Integer num = 15;
 		item = num;
 		
-		//
+		//Imprimindo listas usando tipo curinga
 		List<Integer> outrosNumeros = Arrays.asList(5, 2, 10);
 		imprimirLista(outrosNumeros);
 		
@@ -26,6 +26,7 @@ public class Inicial {
 	}
 	
 	public static void imprimirLista(List<?> listinha) {
+		//list.add(3); nao pode ser feito, pois coringa nao é exatamente um tipo...
 		for (Object item : listinha) {
 			System.out.println(item);
 		}
