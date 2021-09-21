@@ -16,9 +16,17 @@ public class Inicial {
 		formas.add(new Circulo(2.0));
 		
 		System.out.println("Area total: " + areaTotal(formas));
+		
+		 //Lista com subtipo circulos
+		
+		List<Circulo> circulos = new ArrayList<>();
+		circulos.add(new Circulo(2.0));
+		circulos.add(new Circulo(3.0));
+		
+		System.out.println("Area total: " + areaTotal(circulos));
 	}
 	
-	public static double areaTotal(List<Forma> listinha) {
+	public static double areaTotal(List<? extends Forma> listinha) {
 		double soma = 0.0;
 		for(Forma figura : listinha) {
 			soma += figura.area();
