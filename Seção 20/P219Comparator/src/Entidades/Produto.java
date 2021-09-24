@@ -1,6 +1,6 @@
 package Entidades;
 
-public class Produto implements Comparable<Produto>{
+public class Produto{
 	
 	private String nome;
 	private Double preco;
@@ -31,9 +31,5 @@ public class Produto implements Comparable<Produto>{
 	public String toString() {
 		return "Nome:" + nome + ", preco:" + preco;
 	}
-	
-	@Override
-	public int compareTo(Produto produto) {
-		return nome.toUpperCase().compareTo((produto.getNome().toUpperCase()));
-	}
+
 }
