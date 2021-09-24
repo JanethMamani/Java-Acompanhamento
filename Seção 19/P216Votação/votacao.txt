@@ -1,0 +1,9 @@
+X,50
+Signas,40
+Sigma,5
+Lumine,30
+X,40
+Sigma,3
+Signas,30
+X,60
+Lumine,20
