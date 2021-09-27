@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Integrantes.Hunter;
-import Utilitarios.HuntersPredicate;
 
 public class ProgramaExercicio {
 	
@@ -19,7 +18,8 @@ public class ProgramaExercicio {
 		
 		//hunters.removeIf(hunter -> hunter.getHP() >= 40);
 		//hunters.removeIf(new HuntersPredicate());//Implementação de imtarface
-		hunters.removeIf(Hunter::PredicadoHunterStatic);
+		//hunters.removeIf(Hunter::PredicadoHunterStatic);
+		hunters.removeIf(Hunter::PredicadoHunterNaoStatic);
 		
 		for(Hunter integrante : hunters) {
 			System.out.println(integrante);
