@@ -2,6 +2,7 @@ package Aplicacao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import Integrantes.Hunter;
 
@@ -19,7 +20,12 @@ public class ProgramaExercicio {
 		//hunters.removeIf(hunter -> hunter.getHP() >= 40);
 		//hunters.removeIf(new HuntersPredicate());//Implementação de imtarface
 		//hunters.removeIf(Hunter::PredicadoHunterStatic);
-		hunters.removeIf(Hunter::PredicadoHunterNaoStatic);
+		//hunters.removeIf(Hunter::PredicadoHunterNaoStatic);
+		
+		Predicate<Hunter> predicado = hunter -> hunter.getHP() >=40.0;
+		
+		hunters.removeIf(predicado);
+		
 		
 		for(Hunter integrante : hunters) {
 			System.out.println(integrante);
