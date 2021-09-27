@@ -36,6 +36,9 @@ public class Hunter {
 	public void setHP(Double hP) {
 		HP = hP;
 	}
+	public static boolean PredicadoHunterStatic(Hunter testado) {
+		return testado.getHP() >= 40.0;
+	}
 
 	@Override
 	public String toString() {

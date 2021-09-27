@@ -18,7 +18,8 @@ public class ProgramaExercicio {
 		hunters.add(new Hunter("Axl", "B", 40.0));
 		
 		//hunters.removeIf(hunter -> hunter.getHP() >= 40);
-		hunters.removeIf(new HuntersPredicate());//Implementação de imtarface
+		//hunters.removeIf(new HuntersPredicate());//Implementação de imtarface
+		hunters.removeIf(Hunter::PredicadoHunterStatic);
 		
 		for(Hunter integrante : hunters) {
 			System.out.println(integrante);
