@@ -3,9 +3,9 @@ package Aplicacao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Consumer;
 
 import Integrantes.Hunter;
-import Utilitarios.HPUpdate;
 
 public class ProgramaExercicio {
 	
@@ -23,7 +23,19 @@ public class ProgramaExercicio {
 		
 		//hunters.forEach(Hunter::HPUpdateStatic); //Olhe o metodo estatico
 		
-		hunters.forEach(Hunter::HPUpdateNaoStatico);
+		//hunters.forEach(Hunter::HPUpdateNaoStatico);//Olhe o metodo nao estatico
+		
+		double fator = 1.1;
+		
+		/*Consumer<Hunter> energizador = hunter -> {
+			hunter.setHP(hunter.getHP() * fator);
+		};
+		
+		hunters.forEach(energizador);
+		*/
+		
+		//Lambda inline
+		hunters.forEach(hunter -> hunter.setHP(hunter.getHP() * fator));
 		
 		hunters.forEach(System.out::println);
 	}
