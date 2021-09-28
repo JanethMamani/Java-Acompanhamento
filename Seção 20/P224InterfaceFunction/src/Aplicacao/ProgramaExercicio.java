@@ -6,7 +6,6 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 import Integrantes.Hunter;
-import Utilitarios.UpperCaseFunction;
 
 public class ProgramaExercicio {
 	
@@ -22,7 +21,9 @@ public class ProgramaExercicio {
 		
 		//List<String> nomes = hunters.stream().map(new UpperCaseFunction()).collect(Collectors.toList());
 		
-		List<String> nomes = hunters.stream().map(Hunter::UpperCaseStatic).collect(Collectors.toList());
+		//List<String> nomes = hunters.stream().map(Hunter::UpperCaseStatic).collect(Collectors.toList());
+		
+		List<String> nomes = hunters.stream().map(Hunter::UpperCaseNaoStatic).collect(Collectors.toList());
 		
 		nomes.forEach(System.out::println);
 	}

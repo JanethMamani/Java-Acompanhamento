@@ -40,6 +40,10 @@ public class Hunter {
 	public static String UpperCaseStatic(Hunter hunter) {
 		return hunter.getNome().toUpperCase();
 	}
+	
+	public String UpperCaseNaoStatic() {
+		return nome.toUpperCase();
+	}
 
 	@Override
 	public String toString() {
