@@ -3,6 +3,7 @@ package Aplicacao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import Integrantes.Hunter;
@@ -23,7 +24,11 @@ public class ProgramaExercicio {
 		
 		//List<String> nomes = hunters.stream().map(Hunter::UpperCaseStatic).collect(Collectors.toList());
 		
-		List<String> nomes = hunters.stream().map(Hunter::UpperCaseNaoStatic).collect(Collectors.toList());
+		//List<String> nomes = hunters.stream().map(Hunter::UpperCaseNaoStatic).collect(Collectors.toList());
+		
+		Function<Hunter, String> funcao = hunter -> hunter.getNome().toUpperCase();
+		
+		List<String> nomes = hunters.stream().map(funcao).collect(Collectors.toList());
 		
 		nomes.forEach(System.out::println);
 	}
