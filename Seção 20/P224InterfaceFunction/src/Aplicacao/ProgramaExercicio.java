@@ -20,7 +20,9 @@ public class ProgramaExercicio {
 		hunters.add(new Hunter("Iris", "S", 48.0));
 		hunters.add(new Hunter("Axl", "B", 40.0));
 		
-		List<String> nomes = hunters.stream().map(new UpperCaseFunction()).collect(Collectors.toList());
+		//List<String> nomes = hunters.stream().map(new UpperCaseFunction()).collect(Collectors.toList());
+		
+		List<String> nomes = hunters.stream().map(Hunter::UpperCaseStatic).collect(Collectors.toList());
 		
 		nomes.forEach(System.out::println);
 	}

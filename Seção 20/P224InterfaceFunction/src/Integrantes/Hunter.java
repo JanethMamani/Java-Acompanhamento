@@ -37,7 +37,9 @@ public class Hunter {
 		HP = hP;
 	}
 	
-
+	public static String UpperCaseStatic(Hunter hunter) {
+		return hunter.getNome().toUpperCase();
+	}
 
 	@Override
 	public String toString() {
