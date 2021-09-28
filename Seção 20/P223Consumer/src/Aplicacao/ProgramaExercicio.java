@@ -19,6 +19,12 @@ public class ProgramaExercicio {
 		hunters.add(new Hunter("Iris", "S", 48.0));
 		hunters.add(new Hunter("Axl", "B", 40.0));
 		
-		hunters.forEach(new HPUpdate());
+		//hunters.forEach(new HPUpdate()); //Olhe a classe HPUpdate
+		
+		//hunters.forEach(Hunter::HPUpdateStatic); //Olhe o metodo estatico
+		
+		hunters.forEach(Hunter::HPUpdateNaoStatico);
+		
+		hunters.forEach(System.out::println);
 	}
 }

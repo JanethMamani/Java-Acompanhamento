@@ -37,12 +37,12 @@ public class Hunter {
 		HP = hP;
 	}
 	
-	public static boolean PredicadoHunterStatic(Hunter testado) {
-		return testado.getHP() >= 40.0;
+	public static void HPUpdateStatic(Hunter hp) {
+		hp.setHP(hp.getHP() * 1.1);
 	}
 	
-	public boolean PredicadoHunterNaoStatic() {
-		return HP >= 40.0;
+	public void HPUpdateNaoStatico() {
+		setHP(getHP()* 1.1);
 	}
 
 	@Override
