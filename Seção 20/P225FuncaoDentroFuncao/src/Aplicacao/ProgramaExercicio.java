@@ -21,7 +21,7 @@ public class ProgramaExercicio {
 		reploids.add(new Reploid("Alia", "A", 28.0, 13));
 		
 		ServicoHunter sh = new ServicoHunter();
-		double soma = sh.somaFiltrada(reploids);
+		double soma = sh.somaFiltrada(reploids, reploid -> reploid.getNome().charAt(0) == 'I');
 		
 		System.out.println("Soma: " + String.format("%.2f", soma));
 	}
