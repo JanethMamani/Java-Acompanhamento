@@ -1,0 +1,6 @@
+Computador,4500.00
+Tablet,2030.00
+HD Case,1000.00
+Raspeberry,500.00
+TV,3000.00
+Notebook,5000.00
