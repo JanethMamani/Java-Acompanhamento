@@ -13,6 +13,8 @@ public class ProgramaPrincipal {
 		
 		VendedorDAO vendDAO = FabricaDAO.criarVendedorDAO();
 		
+		
+		System.out.println("====Vendedor encontrado por ID====");
 		Vendedor mercador = vendDAO.findById(3);
 		
 		System.out.println(mercador);
