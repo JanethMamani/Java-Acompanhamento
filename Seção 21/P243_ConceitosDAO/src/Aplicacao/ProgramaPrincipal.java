@@ -2,6 +2,8 @@ package Aplicacao;
 
 import java.util.Date;
 
+import DAO.FabricaDAO;
+import DAO.VendedorDAO;
 import Entidades.Departamento;
 import Entidades.Vendedor;
 
@@ -9,10 +11,10 @@ public class ProgramaPrincipal {
 	
 	public static void main(String[] args) {
 		
-		Departamento livros = new Departamento(1, "Livros");
-		System.out.println(livros);
+		VendedorDAO vendDAO = FabricaDAO.criarVendedorDAO();
 		
-		Vendedor mercador = new Vendedor(21, "Mercador", "mercador@gmail.com", new Date(), 3000.0, livros);
+		Vendedor mercador = vendDAO.findById(3);
+		
 		System.out.println(mercador);
 	}
 
