@@ -2,6 +2,7 @@ package Aplicacao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import DAO.FabricaDAO;
 import DAO.VendedorDAO;
@@ -14,6 +15,7 @@ public class ProgramaPrincipal {
 		
 		VendedorDAO vendDAO = FabricaDAO.criarVendedorDAO();
 		
+		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("====Vendedor encontrado por ID====");
 		Vendedor mercador = vendDAO.findById(3);
@@ -43,6 +45,14 @@ public class ProgramaPrincipal {
 		mercador.setNome("Anzu Mazaki");
 		vendDAO.update(mercador);
 		System.out.println("Update completo");
+		
+		System.out.println("===Vendedor função delete====");
+		System.out.print("Digite o id: ");
+		int id = sc.nextInt();
+		vendDAO.deleteById(id);
+		System.out.println("Delete Completo!");
+		
+		sc.close();
 	}
 
 }
