@@ -25,6 +25,12 @@ public class ProgramaPrincipal {
 		for(Vendedor vend : vendedores) {
 			System.out.println(vend);
 		}
+		
+		System.out.println("===Vendedor ordenado pelo findAll===");
+		vendedores = vendDAO.findAll();
+		for(Vendedor merc : vendedores) {
+			System.out.println(merc);
+		}
 	}
 
 }
