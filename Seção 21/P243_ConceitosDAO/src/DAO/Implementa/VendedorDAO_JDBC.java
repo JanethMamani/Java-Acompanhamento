@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import DAO.VendedorDAO;
 import Db.DB;
@@ -87,6 +90,44 @@ public class VendedorDAO_JDBC implements VendedorDAO{
 	public List<Vendedor> findAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Vendedor> findByDepartment(Departamento departamento) {
+		PreparedStatement pt = null;
+		ResultSet rs = null;
+		try {
+			pt = con.prepareStatement(
+					"SELECT seller.*,department.Name as Departamento "
+					+ "FROM seller INNER JOIN department "
+					+ "ON seller.DepartmentId = department.Id "
+					+ "WHERE DepartmentId = ? "
+					+ "ORDER BY Name");
+			
+			pt.setInt(1, departamento.getId());
+			rs = pt.executeQuery();
+			
+			List<Vendedor> vendedores = new ArrayList<>();
+			Map<Integer, Departamento> registroDepartamentos = new HashMap<>();
+			
+			while(rs.next()) {
+				Departamento depart = registroDepartamentos.get(rs.getInt("DepartmentId"));
+				
+				if(depart == null) {
+					depart = instanciarDepartamento(rs);
+					registroDepartamentos.put(rs.getInt("DepartmentId"), depart);
+				}
+				
+				Vendedor mercador = instanciarVendedor(rs, depart);
+				vendedores.add(mercador);
+			}
+			return vendedores;
+		} catch (SQLException excep) {
+			throw new DBException(excep.getMessage());
+		} finally {
+			DB.fecharStatement(pt);
+			DB.fecharResultSet(rs);
+		}
 	}
 
 }

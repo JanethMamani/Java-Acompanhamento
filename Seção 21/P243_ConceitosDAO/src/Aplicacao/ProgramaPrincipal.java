@@ -1,6 +1,6 @@
 package Aplicacao;
 
-import java.util.Date;
+import java.util.List;
 
 import DAO.FabricaDAO;
 import DAO.VendedorDAO;
@@ -18,6 +18,13 @@ public class ProgramaPrincipal {
 		Vendedor mercador = vendDAO.findById(3);
 		
 		System.out.println(mercador);
+		
+		System.out.println("====Vendedor encontrado por ID de Departamento====");
+		Departamento departamento = new Departamento(2, null);
+		List<Vendedor> vendedores = vendDAO.findByDepartment(departamento);
+		for(Vendedor vend : vendedores) {
+			System.out.println(vend);
+		}
 	}
 
 }
