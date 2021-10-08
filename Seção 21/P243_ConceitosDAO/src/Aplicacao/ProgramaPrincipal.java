@@ -1,5 +1,6 @@
 package Aplicacao;
 
+import java.util.Date;
 import java.util.List;
 
 import DAO.FabricaDAO;
@@ -31,6 +32,11 @@ public class ProgramaPrincipal {
 		for(Vendedor merc : vendedores) {
 			System.out.println(merc);
 		}
+		
+		System.out.println("===Vendedor função Insert===");
+		Vendedor novato = new Vendedor(null, "Aria", "aria@gmail.com", new Date(), 4000.0, departamento);
+		vendDAO.insert(novato);
+		System.out.println("Inserido! Novo id = " + novato.getId());
 	}
 
 }
