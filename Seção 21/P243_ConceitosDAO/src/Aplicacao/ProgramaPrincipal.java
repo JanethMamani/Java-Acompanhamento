@@ -37,6 +37,12 @@ public class ProgramaPrincipal {
 		Vendedor novato = new Vendedor(null, "Aria", "aria@gmail.com", new Date(), 4000.0, departamento);
 		vendDAO.insert(novato);
 		System.out.println("Inserido! Novo id = " + novato.getId());
+		
+		System.out.println("===Vendedor função update===");
+		mercador = vendDAO.findById(1);
+		mercador.setNome("Anzu Mazaki");
+		vendDAO.update(mercador);
+		System.out.println("Update completo");
 	}
 
 }
