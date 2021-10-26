@@ -34,7 +34,7 @@ public class ControllerEntradaPrincipal implements Initializable {
 	
 	@FXML
 	public void onMenuItemDepartamentoAction() {
-		System.out.println("Departamento.");
+		loadView("/InterfaceUsuario/ListaDepartamentos.fxml");
 	}
 	
 	@FXML
