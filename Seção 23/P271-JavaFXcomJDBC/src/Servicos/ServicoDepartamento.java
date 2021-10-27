@@ -1,18 +1,17 @@
 package Servicos;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import ConceitoDAO.DepartamentoDAO;
+import ConceitoDAO.FabricaDAO;
 import Entidades.Departamento;
 
 public class ServicoDepartamento {
 	
+	private DepartamentoDAO dao = FabricaDAO.criarDepartamentoDAO();
+	
 	public List<Departamento> findAll(){
-		List<Departamento> departamentos = new ArrayList<>();
-		departamentos.add(new Departamento(1, "Livros"));
-		departamentos.add(new Departamento(2, "Computadores"));
-		departamentos.add(new Departamento(3, "Eletrônicos"));
-		return departamentos;
+		return dao.findAll();
 	}
 
 }
