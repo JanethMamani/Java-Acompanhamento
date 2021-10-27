@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import InterfaceUsuario.Util.Alerts;
+import Servicos.ServicoDepartamento;
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +35,7 @@ public class ControllerEntradaPrincipal implements Initializable {
 	
 	@FXML
 	public void onMenuItemDepartamentoAction() {
-		loadView("/InterfaceUsuario/ListaDepartamentos.fxml");
+		loadView2("/InterfaceUsuario/ListaDepartamentos.fxml");
 	}
 	
 	@FXML
@@ -49,9 +50,10 @@ public class ControllerEntradaPrincipal implements Initializable {
 	}
 	
 	private synchronized void loadView(String absoluteName) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			VBox novaVBox = loader.load();
+			
 			Scene scenePrincipal = Main.getScenePrincipal();
 			VBox VBoxPrincipal = (VBox) ((ScrollPane) scenePrincipal.getRoot()).getContent();
 			
@@ -59,6 +61,28 @@ public class ControllerEntradaPrincipal implements Initializable {
 			VBoxPrincipal.getChildren().clear();
 			VBoxPrincipal.getChildren().add(menuPrincipal);
 			VBoxPrincipal.getChildren().addAll(novaVBox.getChildren());
+		} catch (IOException excep) {
+			Alerts.showAlert("IOException", "Erro carregando página", excep.getMessage(), AlertType.ERROR);
+		}
+		
+	}
+	
+	private synchronized void loadView2(String absoluteName) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
+			VBox novaVBox = loader.load();
+			
+			Scene scenePrincipal = Main.getScenePrincipal();
+			VBox VBoxPrincipal = (VBox) ((ScrollPane) scenePrincipal.getRoot()).getContent();
+			
+			Node menuPrincipal = VBoxPrincipal.getChildren().get(0);
+			VBoxPrincipal.getChildren().clear();
+			VBoxPrincipal.getChildren().add(menuPrincipal);
+			VBoxPrincipal.getChildren().addAll(novaVBox.getChildren());
+			
+			DepartamentoController controleD = loader.getController();
+			controleD.setServicoDepartamento(new ServicoDepartamento());
+			controleD.atualizarTabela();
 		} catch (IOException excep) {
 			Alerts.showAlert("IOException", "Erro carregando página", excep.getMessage(), AlertType.ERROR);
 		}
