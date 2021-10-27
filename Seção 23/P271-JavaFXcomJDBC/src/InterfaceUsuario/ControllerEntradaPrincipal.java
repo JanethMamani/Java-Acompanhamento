@@ -3,6 +3,7 @@ package InterfaceUsuario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import InterfaceUsuario.Util.Alerts;
 import Servicos.ServicoDepartamento;
@@ -35,12 +36,15 @@ public class ControllerEntradaPrincipal implements Initializable {
 	
 	@FXML
 	public void onMenuItemDepartamentoAction() {
-		loadView2("/InterfaceUsuario/ListaDepartamentos.fxml");
+		loadView("/InterfaceUsuario/ListaDepartamentos.fxml", (DepartamentoController controle) -> {
+			controle.setServicoDepartamento(new ServicoDepartamento());
+			controle.atualizarTabela();
+		});
 	}
 	
 	@FXML
 	public void onMenuItemSobreAction() {
-		loadView("/InterfaceUsuario/Sobre.fxml");
+		loadView("/InterfaceUsuario/Sobre.fxml", x -> {});
 	}
 
 	@Override
@@ -49,25 +53,7 @@ public class ControllerEntradaPrincipal implements Initializable {
 		
 	}
 	
-	private synchronized void loadView(String absoluteName) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
-			VBox novaVBox = loader.load();
-			
-			Scene scenePrincipal = Main.getScenePrincipal();
-			VBox VBoxPrincipal = (VBox) ((ScrollPane) scenePrincipal.getRoot()).getContent();
-			
-			Node menuPrincipal = VBoxPrincipal.getChildren().get(0);
-			VBoxPrincipal.getChildren().clear();
-			VBoxPrincipal.getChildren().add(menuPrincipal);
-			VBoxPrincipal.getChildren().addAll(novaVBox.getChildren());
-		} catch (IOException excep) {
-			Alerts.showAlert("IOException", "Erro carregando página", excep.getMessage(), AlertType.ERROR);
-		}
-		
-	}
-	
-	private synchronized void loadView2(String absoluteName) {
+	private synchronized <T> void loadView(String absoluteName, Consumer<T> acaoInicial) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			VBox novaVBox = loader.load();
@@ -80,9 +66,8 @@ public class ControllerEntradaPrincipal implements Initializable {
 			VBoxPrincipal.getChildren().add(menuPrincipal);
 			VBoxPrincipal.getChildren().addAll(novaVBox.getChildren());
 			
-			DepartamentoController controleD = loader.getController();
-			controleD.setServicoDepartamento(new ServicoDepartamento());
-			controleD.atualizarTabela();
+			T controleDesejado = loader.getController();
+			acaoInicial.accept(controleDesejado);
 		} catch (IOException excep) {
 			Alerts.showAlert("IOException", "Erro carregando página", excep.getMessage(), AlertType.ERROR);
 		}
