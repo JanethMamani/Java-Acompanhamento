@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="org.junit.Test"/>
+    <fullyQualifiedTypeName name="org.junit.Assert"/>
+    <fullyQualifiedTypeName name="org.hamcrest.CoreMatchers"/>
+    <fullyQualifiedTypeName name="org.junit.rules.ExpectedException"/>
+    <fullyQualifiedTypeName name="Exceptions.FilmeSemEstoqueExcep"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\Users\Janet\Códigos\IBM - Meu repositório\Acompanhamento-Testes-main\T01-TesteInicialLocadora\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+2202917455.index
+75931715.index
+1458247208.index
+2253455553.index

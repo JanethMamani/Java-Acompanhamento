@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;LocacaoServicoTest.java&apos; to &apos;T01-Locadora/src/Test&apos;&#x0D;&#x0A;- Original project: &apos;T01-Locadora&apos;&#x0D;&#x0A;- Destination element: &apos;T01-Locadora/src/Test&apos;&#x0D;&#x0A;- Original element: &apos;Servico.LocacaoServicoTest.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;Test" element1="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;Servico{LocacaoServicoTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1636382806893" units="1" version="1.0"/>
+</session>
