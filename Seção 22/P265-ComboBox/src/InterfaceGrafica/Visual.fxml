@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceGrafica.VisualController">
    <children>
-      <ButtonBar layoutX="33.0" layoutY="330.0" prefHeight="40.0" prefWidth="78.0" />
-      <Label layoutX="55.0" layoutY="43.0" text="Soma">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
-      <TextField fx:id="txtNumero1" layoutX="55.0" layoutY="81.0" promptText="Digite o primeiro número" />
-      <TextField fx:id="txtNumero2" layoutX="55.0" layoutY="144.0" promptText="Digite o segundo número" />
-      <Button fx:id="btSoma" layoutX="55.0" layoutY="209.0" mnemonicParsing="false" onAction="#onBotaoSumAction" text="Somar números" />
-      <Label layoutX="58.0" layoutY="276.0" text="Resultado:" />
-      <Label fx:id="labelResultado" layoutX="118.0" layoutY="266.0" prefHeight="9.0" prefWidth="172.0">
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding></Label>
+      <ComboBox fx:id="pessoasCombo" layoutX="50.0" layoutY="57.0" prefWidth="150.0" promptText="Select a person..." />
    </children>
 </AnchorPane>

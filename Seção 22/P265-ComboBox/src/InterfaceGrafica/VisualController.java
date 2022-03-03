@@ -1,47 +1,46 @@
 package InterfaceGrafica;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-import Utilidades.Alertas;
+import Entidades.Pessoa;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.util.Callback;
 
 public class VisualController implements Initializable{
 
 	@FXML
-	private TextField txtNumero1;
-
-	@FXML
-	private TextField txtNumero2;
-
-	@FXML
-	private Label labelResultado;
-
-	@FXML
-	private Button btSoma;
-
-	@FXML
-	public void onBotaoSumAction() {
-		try {
-			double numero1 = Double.parseDouble(txtNumero1.getText());
-			double numero2 = Double.parseDouble(txtNumero2.getText());
-			double soma = numero1 + numero2;
-			labelResultado.setText(String.format("%.2f", soma));
-		} catch (NumberFormatException exp) {
-			Alertas.mostrarAlerta("Erro ao calcular", null, "Insira um número válido!\n" + exp.getMessage(), AlertType.ERROR);
-		}
-	}
+	private ComboBox<Pessoa> pessoasCombo;
+	
+	private ObservableList<Pessoa> contatos;
 
 	@Override
 	public void initialize(URL urlParaInserirNaoesta, ResourceBundle rb) {
-		ConstraintsLimitacao.apenasDouble(txtNumero1);
-		ConstraintsLimitacao.apenasDouble(txtNumero2);
-		ConstraintsLimitacao.limitarQuantidade(txtNumero1, 12);
-		ConstraintsLimitacao.limitarQuantidade(txtNumero2, 12);
+		List<Pessoa> pessoasLista = new ArrayList<>();
+		pessoasLista.add(new Pessoa(1, "Maria", "maria@gmail.com"));
+		pessoasLista.add(new Pessoa(2, "Alex", "alex@gmail.com"));
+		pessoasLista.add(new Pessoa(3, "Bob", "bob@gmail.com"));
+		
+		contatos = FXCollections.observableArrayList(pessoasLista);
+		pessoasCombo.setItems(contatos);
+		
+		Callback<ListView<Pessoa>, ListCell<Pessoa>> produz = lv -> new ListCell<Pessoa>() {
+			protected void atualizarItem(Pessoa item, boolean vazio) {
+				super.updateItem(item, vazio);
+				setText(vazio ? "" : item.getNome());
+			}
+		};
+		
+		pessoasCombo.setCellFactory(produz);
+		pessoasCombo.setButtonCell(produz.call(null));
 	}
-}
+}	
+
