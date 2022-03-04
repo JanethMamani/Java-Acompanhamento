@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -21,6 +22,22 @@ public class VisualController implements Initializable{
 	private ComboBox<Pessoa> pessoasCombo;
 	
 	private ObservableList<Pessoa> contatos;
+	
+	@FXML
+	private Button botaoAll;
+	
+	@FXML
+	public void onBotaoAllAction() {
+		for (Pessoa pessoa : pessoasCombo.getItems()) {
+			System.out.println(pessoa);
+		}
+	}
+	
+	@FXML
+	public void onComboBoxPessoasAction() {
+		Pessoa pessoa = pessoasCombo.getSelectionModel().getSelectedItem();
+		System.out.println(pessoa);
+	}
 
 	@Override
 	public void initialize(URL urlParaInserirNaoesta, ResourceBundle rb) {
@@ -33,7 +50,8 @@ public class VisualController implements Initializable{
 		pessoasCombo.setItems(contatos);
 		
 		Callback<ListView<Pessoa>, ListCell<Pessoa>> produz = lv -> new ListCell<Pessoa>() {
-			protected void atualizarItem(Pessoa item, boolean vazio) {
+			@Override
+			protected void updateItem(Pessoa item, boolean vazio) {
 				super.updateItem(item, vazio);
 				setText(vazio ? "" : item.getNome());
 			}
