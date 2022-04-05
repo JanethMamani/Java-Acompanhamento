@@ -3,7 +3,10 @@ package Test;
 import java.util.Date;
 
 import org.hamcrest.CoreMatchers;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -18,6 +21,8 @@ import Servico.LocacaoServico;
 import Utilitarios.DataUtilid;
 
 public class LocacaoServicoTest {
+	LocacaoServico servico;
+	int contador;
 	
 	@Rule
 	public ErrorCollector erro = new ErrorCollector();
@@ -25,9 +30,27 @@ public class LocacaoServicoTest {
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 	
+	@BeforeClass
+	public void antesTodas() {
+		int contador = 0;
+	}
+	
+	@Before
+	public void configuracoesIniciais() {
+		System.out.println("Before");
+		LocacaoServico servico = new LocacaoServico();
+		contador ++;
+		System.out.println(contador);
+	}
+	
+	@After
+	public void apos() {
+		System.out.println("Depois: recomendado fechar conexões");
+	}
+	
 	@Test
 	public void teste() throws Exception { //O JUnit pode gerenciar se a exceção for lançada
-		LocacaoServico servico = new LocacaoServico();
+		//LocacaoServico servico = new LocacaoServico();
 		Usuario usuario = new Usuario("Usuario 1");
 		Filme filme = new Filme("Filme aleatorio", 2, 5.0);
 		
@@ -42,7 +65,7 @@ public class LocacaoServicoTest {
 	
 	@Test(expected=FilmeSemEstoqueExcep.class)
 	public void testLocacao_filmeSemEstoque() throws Exception{
-		LocacaoServico servico  = new LocacaoServico();
+		//LocacaoServico servico  = new LocacaoServico();
 		Usuario usuario = new Usuario("Usuario 1");
 		Filme filme = new Filme("Filme 1", 0, 5.0);
 		
@@ -51,7 +74,7 @@ public class LocacaoServicoTest {
 	
 	@Test
 	public void testLocacao_usuarioVazio() throws FilmeSemEstoqueExcep {
-		LocacaoServico servico = new LocacaoServico();
+		//LocacaoServico servico = new LocacaoServico();
 		Filme filme = new Filme("Filme 2", 1, 4.0);
 		
 		try {
@@ -66,7 +89,7 @@ public class LocacaoServicoTest {
 	
 	@Test
 	public void testeLocacao_FilmeVazio() throws FilmeSemEstoqueExcep, LocadoraException {
-		LocacaoServico servico = new LocacaoServico();
+		//LocacaoServico servico = new LocacaoServico();
 		Usuario usuario = new Usuario("Usuario 1");
 		
 		exception.expect(LocadoraException.class);
